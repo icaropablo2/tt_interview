@@ -1,12 +1,7 @@
-import unittest
+import pytest
+
 from venmo_exceptions import UsernameException
 
-class TestUser(unittest.TestCase):
+def test_user_payment():
+    assert True is False
 
-    def test_this_works(self):
-        with self.assertRaises(UsernameException):
-            raise UsernameException()
-
-
-if __name__ == '__main__':
-    unittest.main()
