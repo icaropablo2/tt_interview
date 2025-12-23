@@ -38,11 +38,9 @@ class MiniVenmo:
 
         bobby.add_friend(carol)
 
-
 def main():
     minivenmo = MiniVenmo()
     minivenmo.run()
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

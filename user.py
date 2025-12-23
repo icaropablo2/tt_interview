@@ -46,7 +46,6 @@ class User:
             self.pay_with_balance(target, amount, note)
         else:
             self.pay_with_card(target, amount, note)
-        self.            
         return payment
 
 
@@ -70,8 +69,14 @@ class User:
 
     def pay_with_balance(self, target, amount, note):
         # TODO: add code here
+        if self.balance < amount:
+            raise PaymentException('Without found to make this payment.')
+
+        if self.username == target.username:
+            raise PaymentException('User cannot pay themselves.')
+
         target.add_to_balance(amount)
-        pass
+        self.feed.append(note)
 
     def _is_valid_credit_card(self, credit_card_number):
         return credit_card_number in ["4111111111111111", "4242424242424242"]
