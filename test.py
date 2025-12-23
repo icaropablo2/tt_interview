@@ -16,3 +16,5 @@ def test_user_payment__():
 
     with pytest.raises(PaymentException) as error:
         payment = bobby.pay(carol, 5.00, "Coffee")
+    assert str(error) == "<ExceptionInfo PaymentException('User cannot pay themselves.') tblen=3>"
+
