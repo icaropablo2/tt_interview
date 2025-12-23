@@ -4,7 +4,7 @@ from payment import Payment
 
 class User:
 
-    feed = []
+    feed = {}
 
     def __init__(self, username):
         self.credit_card_number = None
@@ -16,9 +16,9 @@ class User:
             raise UsernameException('Username not valid.')
 
 
-    def retrieve_feed(self):
+    def retrieve_feed(self, username):
         # TODO: add code here
-        return self.feed
+        return self.feed.get(username) or []
 
     def add_friend(self, new_friend):
         # TODO: add code here
@@ -46,8 +46,16 @@ class User:
             self.pay_with_balance(target, amount, note)
         else:
             self.pay_with_card(target, amount, note)
+        
+        self._add_feed(payment)
+        
         return payment
 
+    def _add_feed(self, payment):
+        actor_name = payment.actor.username
+        if not self.feed.get(actor_name):
+            self.feed[actor_name] = []
+        self.feed[actor_name].append(payment)
 
     def pay_with_card(self, target, amount, note):
         amount = float(amount)
@@ -76,7 +84,6 @@ class User:
             raise PaymentException('User cannot pay themselves.')
 
         target.add_to_balance(amount)
-        self.feed.append(note)
 
     def _is_valid_credit_card(self, credit_card_number):
         return credit_card_number in ["4111111111111111", "4242424242424242"]

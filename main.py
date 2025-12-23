@@ -13,8 +13,9 @@ class MiniVenmo:
         # Bobby paid Carol $5.00 for Coffee
         # Carol paid Bobby $15.00 for Lunch
         # TODO: add code here
-        print(feed)
-        pass
+        import pdb; pdb.set_trace()
+        message = f"{feed.actor.username} paid {feed.target.username} {feed.amount} for {feed.note}"
+        print(message)
 
     @classmethod
     def run(cls):
@@ -33,7 +34,7 @@ class MiniVenmo:
             print(e)
 
         for user in [bobby, carol]:
-            feed = user.retrieve_feed()
+            feed = user.retrieve_feed(user.username)
             venmo.render_feed(feed)
 
         bobby.add_friend(carol)
