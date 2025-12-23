@@ -55,6 +55,7 @@ class User:
         actor_name = payment.actor.username
         if not self.feed.get(actor_name):
             self.feed[actor_name] = []
+
         self.feed[actor_name].append(payment)
 
     def pay_with_card(self, target, amount, note):

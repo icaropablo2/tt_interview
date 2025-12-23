@@ -13,8 +13,8 @@ class MiniVenmo:
         # Bobby paid Carol $5.00 for Coffee
         # Carol paid Bobby $15.00 for Lunch
         # TODO: add code here
-        import pdb; pdb.set_trace()
-        message = f"{feed.actor.username} paid {feed.target.username} {feed.amount} for {feed.note}"
+        for item in feed:
+            message = f"{item.actor.username} paid ${item.target.username} {item.amount} for {item.note}"
         print(message)
 
     @classmethod
