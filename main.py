@@ -14,7 +14,7 @@ class MiniVenmo:
         # Carol paid Bobby $15.00 for Lunch
         # TODO: add code here
         for item in feed:
-            message = f"{item.actor.username} paid ${item.target.username} {item.amount} for {item.note}"
+            message = f"{item.actor.username} paid {item.target.username} ${item.amount:0.2f} for {item.note}"
         print(message)
 
     @classmethod
